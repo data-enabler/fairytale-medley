@@ -1,0 +1,8 @@
+*page_break
+*if next_scene = 0
+	*goto_scene 0-startup
+*elseif next_scene = 1
+	*goto_scene 1-example
+*else
+	Error: ${next_scene} is not a valid scene number
+	*ending

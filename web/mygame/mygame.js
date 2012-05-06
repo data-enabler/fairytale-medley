@@ -21,13 +21,15 @@
 // Specify the list of scenes here, separated by commas, with no final comma
 
 nav = new SceneNavigator([
-	"startup"
+	"0-startup",
+	"1-example",
+	"selector"
 ]);
 
 // Specify the default starting stats here
 
 stats = {
-
+	next_scene: 0
 };
 
 // Specify the stats to use in debug mode
