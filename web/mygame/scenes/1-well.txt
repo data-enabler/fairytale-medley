@@ -11,7 +11,7 @@
 *temp loyalty
 *set  loyalty false
 
-*character dependent dialogue and disposition changes
+*comment character dependent dialogue and disposition changes
 *temp payment_servitude
 *set  payment_servitude character & "_payment_servitude"
 *temp payment_money
@@ -25,47 +25,59 @@
 
 *temp entrance1
 *set  entrance1 character & "_entrance1"
+*set  entrance1 {entrance1}
 *temp entrance1_disp
 *set  entrance1_disp character & "_entrance1_disp"
 *temp entrance2
 *set  entrance2 character & "_entrance2"
+*set  entrance2 {entrance2}
 *temp entrance2_disp
 *set  entrance2_disp character & "_entrance2_disp"
 *temp entrance3
 *set  entrance3 character & "_entrance3"
+*set  entrance3 {entrance3}
 *temp entrance3_disp
 *set  entrance3_disp character & "_entrance3_disp"
 
 *temp response1
 *set  response1 character & "_response1"
+*set  response1 {response1}
 *temp response1_disp
 *set  response1_disp character & "_response1_disp"
 *temp response2
 *set  response2 character & "_response2"
+*set  response2 {response2}
 *temp response2_disp
 *set  response2_disp character & "_response2_disp"
 *temp response3
 *set  response3 character & "_response3"
+*set  response3 {response3}
 *temp response3_disp
 *set  response3_disp character & "_response3_disp"
 
 *temp bargain
 *set  bargain character & "_bargain"
+*set  bargain {bargain}
 *temp instareject
 *set  instareject character & "_instareject"
-*temp accept
-*set  accept character & "_accept"
+*set  instareject {instareject}
 *temp reject
 *set  reject character & "_reject"
+*set  reject {reject}
 
 *temp ending1
 *set  ending1 character & "_ending1"
+*set  ending1 {ending1}
 *temp ending2
 *set  ending2 character & "_ending2"
+*set  ending2 {ending2}
 *temp ending3
 *set  ending3 character & "_ending3"
+*set  ending3 {ending3}
 
-Intro
+The three brothers found the magic well in the woods where the old woman had said they would find it. The first brother stepped forward to retrieve the water, but a spirit appeared to stop him.
+
+"I am the spirit that guards this well," the spirit said. "I am bound by duty to prevent all save the well's owner from drawing water from it. The well belongs to a wise and kindly king."
 
 *label action
 *choice
@@ -85,22 +97,23 @@ Intro
 *label reason
 *choice
 	#${well_reason1}
-		*set gold true
+		*set loyalty true
 		*set disposition + {response1_disp}
 		${response1}
 		*goto bargain
 	#${well_reason2}
 		*set cure true
-		*set disposition + {response1_disp}
+		*set disposition + {response2_disp}
 		${response2}
 		*goto bargain
 	#${well_reason3}
-		*set loyalty true
-		*set disposition + {response1_disp}
+		*set gold true
+		*set disposition + {response3_disp}
 		${response3}
 		*goto bargain
 
 *label bargain
+*line_break
 *line_break
 *if disposition <= 0
 	${instareject}
@@ -111,6 +124,7 @@ Intro
 	
 *label loop
 *line_break
+*line_break
 *if disposition <= 0
 	${ending3}
 	*goto end
@@ -119,51 +133,41 @@ Intro
 	*label loop_inner
 	*disable_reuse
 	*choice
-		#Offer servitude
+		#"I pledge to return once my errand is finished and serve you."
 			*if {payment_servitude}
-				${accept}
-				*line_break
 				${ending2}
 				*goto end
 			*else
 				${reject}
 				*set disposition -1
 				*goto loop
-		*if (inv_money) #Offer money
+		*if (inv_money) #"I will offer you what little money I have."
 			*if {payment_money}
-				${accept}
 				*set inv_money false
-				*line_break
 				${ending1}
 				*goto end
 			*else
 				${reject}
 				*set disposition -1
 				*goto loop
-		*if (gold) #Offer gold
+		*if (gold) #"I will give you some of the magic gold, once I have it."
 			*if {payment_gold}
-				${accept}
-				*line_break
 				${ending1}
 				*goto end
 			*else
 				${reject}
 				*set disposition -1
 				*goto loop
-		*if (cure) #Offer cure
+		*if (cure) #"I will tell you the secret of the nostrum."
 			*if {payment_cure}
-				${accept}
-				*line_break
 				${ending1}
 				*goto end
 			*else
 				${reject}
 				*set disposition -1
 				*goto loop
-		*if (loyalty) #Offer loyalty
+		*if (loyalty) #"I offer you my family's eternal gratitude."
 			*if {payment_loyalty}
-				${accept}
-				*line_break
 				${ending1}
 				*goto end
 			*else
