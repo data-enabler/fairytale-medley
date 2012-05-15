@@ -1,0 +1,175 @@
+*temp disposition
+*set  disposition 2
+*temp character
+*set  character "king"
+
+*comment conversation-dependent inventory
+*temp gold
+*set  gold false
+*temp cure
+*set  cure false
+*temp loyalty
+*set  loyalty false
+
+*character dependent dialogue and disposition changes
+*temp payment_servitude
+*set  payment_servitude character & "_payment_servitude"
+*temp payment_money
+*set  payment_money character & "_payment_money"
+*temp payment_gold
+*set  payment_gold character & "_payment_gold"
+*temp payment_cure
+*set  payment_cure character & "_payment_cure"
+*temp payment_loyalty
+*set  payment_loyalty character & "_payment_loyalty"
+
+*temp entrance1
+*set  entrance1 character & "_entrance1"
+*temp entrance1_disp
+*set  entrance1_disp character & "_entrance1_disp"
+*temp entrance2
+*set  entrance2 character & "_entrance2"
+*temp entrance2_disp
+*set  entrance2_disp character & "_entrance2_disp"
+*temp entrance3
+*set  entrance3 character & "_entrance3"
+*temp entrance3_disp
+*set  entrance3_disp character & "_entrance3_disp"
+
+*temp response1
+*set  response1 character & "_response1"
+*temp response1_disp
+*set  response1_disp character & "_response1_disp"
+*temp response2
+*set  response2 character & "_response2"
+*temp response2_disp
+*set  response2_disp character & "_response2_disp"
+*temp response3
+*set  response3 character & "_response3"
+*temp response3_disp
+*set  response3_disp character & "_response3_disp"
+
+*temp bargain
+*set  bargain character & "_bargain"
+*temp instareject
+*set  instareject character & "_instareject"
+*temp accept
+*set  accept character & "_accept"
+*temp reject
+*set  reject character & "_reject"
+
+*temp ending1
+*set  ending1 character & "_ending1"
+*temp ending2
+*set  ending2 character & "_ending2"
+*temp ending3
+*set  ending3 character & "_ending3"
+
+Intro
+
+*label action
+*choice
+	#${well_action1}
+		${entrance1}
+		*set disposition + {entrance1_disp}
+		*goto reason
+	#${well_action2}
+		${entrance2}
+		*set disposition + {entrance2_disp}
+		*goto reason
+	#${well_action3}
+		${entrance3}
+		*set disposition + {entrance3_disp}
+		*goto reason
+
+*label reason
+*choice
+	#${well_reason1}
+		*set gold true
+		*set disposition + {response1_disp}
+		${response1}
+		*goto bargain
+	#${well_reason2}
+		*set cure true
+		*set disposition + {response1_disp}
+		${response2}
+		*goto bargain
+	#${well_reason3}
+		*set loyalty true
+		*set disposition + {response1_disp}
+		${response3}
+		*goto bargain
+
+*label bargain
+*line_break
+*if disposition <= 0
+	${instareject}
+	*ending
+*else
+	${bargain}
+	*goto loop_inner
+	
+*label loop
+*line_break
+*if disposition <= 0
+	${ending3}
+	*goto end
+*else
+	What will you offer?
+	*label loop_inner
+	*disable_reuse
+	*choice
+		#Offer servitude
+			*if {payment_servitude}
+				${accept}
+				*line_break
+				${ending2}
+				*goto end
+			*else
+				${reject}
+				*set disposition -1
+				*goto loop
+		*if (inv_money) #Offer money
+			*if {payment_money}
+				${accept}
+				*set inv_money false
+				*line_break
+				${ending1}
+				*goto end
+			*else
+				${reject}
+				*set disposition -1
+				*goto loop
+		*if (gold) #Offer gold
+			*if {payment_gold}
+				${accept}
+				*line_break
+				${ending1}
+				*goto end
+			*else
+				${reject}
+				*set disposition -1
+				*goto loop
+		*if (cure) #Offer cure
+			*if {payment_cure}
+				${accept}
+				*line_break
+				${ending1}
+				*goto end
+			*else
+				${reject}
+				*set disposition -1
+				*goto loop
+		*if (loyalty) #Offer loyalty
+			*if {payment_loyalty}
+				${accept}
+				*line_break
+				${ending1}
+				*goto end
+			*else
+				${reject}
+				*set disposition -1
+				*goto loop
+
+*label end
+*ending

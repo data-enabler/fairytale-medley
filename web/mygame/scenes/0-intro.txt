@@ -1,0 +1,39 @@
+There once was a hunter who lived in a small cabin in the woods with his wife, and their three sons. They were very poor, but happy together. It so happened that one day the hunter was away selling pelts to the traders on the river, when his wife fell very ill.
+
+
+The hunter's sons knew that it could be many days before the hunter returned. Luckily, a cunning old woman lived nearby in the woods. She was not a compassionate woman, and always demanded a price for her services, although she was not unreasonable. However, she was known to be vengeful when slighted, and it was said that her hooked nose could smell any lie.
+
+
+The old woman would demand a heavy price for a cure, and the family had little money, although they would have a little more when the hunter returned.
+
+
+"We should go to the old woman and ask her help," said the eldest son, who was wise and intelligent. "I shall reason with her to get a good price on a cure for our mother."
+
+
+"I shall go," said the second son, who was cunning and sly. "The old woman would surely charge us more than we could bear for the cure. I could craft a clever lie to trick her into giving us the cure for free."
+
+
+"No, I shall go," said the youngest son, who was innocent and naive. "I will tell the old woman our whole situation, and out of the goodness of her heart, she will surely give us the cure without cost."
+
+*page_break
+
+In the end, it was decided that the eldest son should go to the old woman's hut.
+
+
+"Wise woman," he said, choosing his words carefully. "I come on behalf of my mother, who is deathly ill. If she does not receive medicine she shall soon die. Our father has been missing many days, and we do not know when he may return. We have little money, but would pay you all we currently have."
+
+
+He did not say that their father was selling pelts, as then the woman might ask for more payment, which would strain their family greatly.
+
+
+"It is a costly treatment, but I will take what money you have," said the woman, who smelled no lie, and was pleased by the promise of payment.
+
+
+"For this cure I will need you to collect water from a certain well in the woods Bring me this, and I shall craft a spell to cure your mother."
+
+
+The eldest son returned home with the news, and with his brothers, set out to gather what the old woman required.
+
+*finish
+*set next_scene 1
+*goto_scene selector

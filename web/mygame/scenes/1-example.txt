@@ -1,4 +1,0 @@
-Scene 1: Example - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ipsum sit amet ante gravida euismod in sagittis mauris. Ut et risus magna, sed rutrum libero. Pellentesque odio justo, gravida a scelerisque ut, egestas et nisl. Donec mattis rhoncus risus vel ullamcorper. Nullam vitae quam eu erat feugiat viverra. Sed pretium, ante sit amet porta bibendum, nulla magna rhoncus ante, quis tristique massa arcu id elit. Fusce ullamcorper ante a mi elementum tincidunt. Donec vehicula dignissim bibendum. Nullam mollis egestas diam et eleifend. Nulla sed posuere justo. Aenean vitae ante est, a ultrices lorem. Donec faucibus sem ac massa sollicitudin scelerisque. Integer sit amet eros lectus, non egestas nibh. Morbi consectetur placerat faucibus. 
-
-*set next_scene 0
-*goto_scene selector

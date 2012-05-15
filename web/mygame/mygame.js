@@ -21,8 +21,8 @@
 // Specify the list of scenes here, separated by commas, with no final comma
 
 nav = new SceneNavigator([
-	"0-startup",
-	"1-example",
+	"0-intro",
+	"1-well",
 	"selector"
 ]);
 
@@ -30,6 +30,42 @@ nav = new SceneNavigator([
 
 stats = {
 	next_scene: 0
+	
+	,inv_money: true
+	
+	,well_action1: "well_action1"
+	,well_action2: "well_action2"
+	,well_action3: "well_action3"
+	,well_reason1: "well_reason1"
+	,well_reason2: "well_reason2"
+	,well_reason3: "well_reason3"
+	
+	,king_pronoun: "he"
+	,king_name: "the King"
+	,king_entrance1: "king_entrance1"
+	,king_entrance1_disp: -1
+	,king_entrance2: "king_entrance2"
+	,king_entrance2_disp: 0
+	,king_entrance3: "king_entrance3"
+	,king_entrance3_disp: 1
+	,king_response1: "king_response1"
+	,king_response1_disp: -1
+	,king_response2: "king_response2"
+	,king_response2_disp: 0
+	,king_response3: "king_response3"
+	,king_response3_disp: 1
+	,king_bargain: "king_bargain"
+	,king_instareject: "king_insta-reject"
+	,king_accept: "king_accept"
+	,king_reject: "king_reject"
+	,king_ending1: "king_ending1"
+	,king_ending2: "king_ending2"
+	,king_ending3: "king_ending3"
+	,king_payment_servitude: false
+	,king_payment_money: false
+	,king_payment_gold: false
+	,king_payment_cure: false
+	,king_payment_loyalty: true
 };
 
 // Specify the stats to use in debug mode
