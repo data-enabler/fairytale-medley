@@ -1,7 +1,7 @@
 *temp disposition
 *set  disposition 2
 *temp character
-*set  character "king"
+*set  character "troll"
 
 *comment conversation-dependent inventory
 *temp gold
@@ -22,6 +22,19 @@
 *set  payment_cure character & "_payment_cure"
 *temp payment_loyalty
 *set  payment_loyalty character & "_payment_loyalty"
+
+*temp he
+*set  he character & "_he"
+*set  he {he}
+*temp his
+*set  his character & "_his"
+*set  his {his}
+*temp name
+*set  name character & "_name"
+*set  name {name}
+*temp desc
+*set  desc character & "_desc"
+*set  desc {desc}
 
 *temp entrance1
 *set  entrance1 character & "_entrance1"
@@ -77,36 +90,36 @@
 
 The three brothers found the magic well in the woods where the old woman had said they would find it. The first brother stepped forward to retrieve the water, but a spirit appeared to stop him.
 
-"I am the spirit that guards this well," the spirit said. "I am bound by duty to prevent all save the well's owner from drawing water from it. The well belongs to a wise and kindly king."
+"I am the spirit that guards this well," the spirit said. "I am bound by duty to prevent all save the well's owner from drawing water from it. The well belongs to ${desc}."
 
 *label action
 *choice
-	#${well_action1}
+	#"May I speak to ${name} and ask ${his} permission?" asked the first brother.
 		${entrance1}
 		*set disposition + {entrance1_disp}
 		*goto reason
-	#${well_action2}
+	#"I do not have much, but if you let me draw some water, perhaps I could find a way to free you of your duty to ${name}." said the first brother.
 		${entrance2}
 		*set disposition + {entrance2_disp}
 		*goto reason
-	#${well_action3}
+	#The first brother feigned a look of concern. "If none may draw from the well but its owner, then how is it that finch is carrying water away in a nutshell?"
 		${entrance3}
 		*set disposition + {entrance3_disp}
 		*goto reason
 
 *label reason
 *choice
-	#${well_reason1}
+	#"Please," said the first brother. "My mother is deathly ill, and I need this well water to cure her."
 		*set loyalty true
 		*set disposition + {response1_disp}
 		${response1}
 		*goto bargain
-	#${well_reason2}
+	#"This well water is one of several ingredients in a magical nostrum," said the first brother. "The making of which is known only to an acquaintance of mine. I am gathering the ingredients for her."
 		*set cure true
 		*set disposition + {response2_disp}
 		${response2}
 		*goto bargain
-	#${well_reason3}
+	#"I know of a spell that may turn this particular water to gold," said the first brother. "If you let me have this water, I can make it worth your while."
 		*set gold true
 		*set disposition + {response3_disp}
 		${response3}

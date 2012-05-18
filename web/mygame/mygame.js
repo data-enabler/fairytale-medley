@@ -33,15 +33,10 @@ stats = {
 	
 	,inv_money: true
 	
-	,well_action1: '"May I speak to the king and ask his permission?" asked the first brother.'
-	,well_action2: '"I do not have much, but if you let me draw some water, perhaps I could find a way to free you of your duty to the king." said the first brother.'
-	,well_action3: 'The first brother feigned a look of concern. "If none may draw from the well but its owner, then how is it that finch is carrying water away in a nutshell?"'
-	,well_reason1: '"Please," said the first brother. "My mother is deathly ill, and I need this well water to cure her."'
-	,well_reason2: '"This well water is one of several ingredients in a magical nostrum," said the first brother. "The making of which is known only to an acquaintance of mine. I am gathering the ingredients for her."'
-	,well_reason3: '"I know of a spell that may turn this particular water to gold," said the first brother. "If you let me have this water, I can make it worth your while."'
-	
-	,king_pronoun: "he"
-	,king_name: "the King"
+	,king_he: 'he'
+	,king_his: 'his'
+	,king_name: 'the King'
+	,king_desc: 'a wise and kindly king'
 	,king_entrance1: '"Certainly," replied the spirit.\nJust then, the king happened to pass by. He saw the first brother near the well, and asked, "What business does this young man have with my well?"\nThe first brother bowed. "I humbly ask your permission to draw from this, your well," he said.\n"Many ask such a boon," mused the king. "Pray tell, why do you need the water so?"'
 	,king_entrance1_disp: +1
 	,king_entrance2: 'Just then, the king happened to pass by. He saw the first brother near the well, and asked, "What business does this young man have with my well?"\nThe spirit spoke up, as it was bound by duty to answer the well\'s owner truthfully. "The boy was trying to bargain with me in return for some water from the well," it said, abashed.\n"It is clear the well water is worth much to you, that you would bargain for it," said the king. "Why do you want it so badly?"'
@@ -65,6 +60,62 @@ stats = {
 	,king_payment_gold: false
 	,king_payment_cure: true
 	,king_payment_loyalty: true
+	
+	,troll_he: 'he'
+	,troll_his: 'his'
+	,troll_name: 'the troll'
+	,troll_desc: 'an unsightly and malevolent troll'
+	,troll_entrance1: 'Just then, the troll happened to pass by. He saw the first brother near the well, and roared, "Who dares approach me well?"\nThe first brother bowed. "I humbly ask your permission to draw from this, your well," he said.\n"Many fools come wantin’ me water," replied the troll. "Why ya need it, eh?"'
+	,troll_entrance1_disp: +1
+	,troll_entrance2: 'Just then, the troll happened to pass by. He saw the first brother near the well, and roared, "Who dares approach me well?"\nThe spirit spoke up, as it was bound by duty to answer the well\'s owner truthfully. "The boy was trying to bargain with me in return for some water from the well," it said, abashed.\n"Ya want water so much ya be bargainin’ for it," replied the troll. "Why ya need it, eh?"'
+	,troll_entrance2_disp: 0
+	,troll_entrance3: 'The spirit, falling for the ruse, turned to chide the finch, and in that instant, the first brother snatched some water from the well and began to leave, when…\nThe spirit saw the first brother, and quickly snatched the water back from him.\nJust then, the troll happened to pass by. He saw the first brother near the well, and roared, "Who dares approach me well?"\n"This boy stole water from your well!" cried the spirit angrily.\nThe troll turned to the first brother. "Ya come to me home, stealin’ me water. Why meself let ya go, eh?"'
+	,troll_entrance3_disp: -1
+	,troll_response1: '"Ya mother, eh?" cackled the troll. "Me know no mother."'
+	,troll_response1_disp: 0
+	,troll_response2: '"Ya makin’ nostrum?!" yelled the troll. "Ya tryin’ ta poison me?"'
+	,troll_response2_disp: -1
+	,troll_response3: '"Gold, eh?" smirked the troll. "Ya make gold from me water?"'
+	,troll_response3_disp: 1
+	,troll_bargain: '"Me water, me well. Meself no give me water to human fools," the troll continued. "What ya be givin’ me?"'
+	,troll_instareject: '"Thief! Scum!" the troll bellowed. "Ya come to steal me water, I be havin’ ya for dinner!"\nThe first brother, fearing for his safety, fled as fast as he could.'
+	,troll_reject: ''
+	,troll_ending1: '"Fair’s fair, eh. Ya be takin’ da water now, but ya better be comin’ back with me gold," smirked the troll.\nThe first brother took the water and left.'
+	,troll_ending2: '"Fair’s fair, eh. Ya be takin’ da water now. When ya mother be well, ya better be comin’ back to me," smirked the troll.'
+	,troll_ending3: '"Ya fool be havin’ nothing worthwhile to offer! Leave me place, now!" The troll watched the first brother return to the woods.'
+	,troll_payment_servitude: true
+	,troll_payment_money: false
+	,troll_payment_gold: true
+	,troll_payment_cure: false
+	,troll_payment_loyalty: false
+	
+	,witch_he: 'she'
+	,witch_his: 'her'
+	,witch_name: 'the witch'
+	,witch_desc: ''
+	,witch_entrance1: ''
+	,witch_entrance1_disp: +1
+	,witch_entrance2: ''
+	,witch_entrance2_disp: 0
+	,witch_entrance3: ''
+	,witch_entrance3_disp: -1
+	,witch_response1: ''
+	,witch_response1_disp: 1
+	,witch_response2: ''
+	,witch_response2_disp: 0
+	,witch_response3: ''
+	,witch_response3_disp: -1
+	,witch_bargain: ''
+	,witch_instareject: ''
+	,witch_reject: ''
+	,witch_ending1: ''
+	,witch_ending2: ''
+	,witch_ending3: ''
+	,witch_payment_servitude: true
+	,witch_payment_money: false
+	,witch_payment_gold: false
+	,witch_payment_cure: true
+	,witch_payment_loyalty: true
 };
 
 // Specify the stats to use in debug mode
