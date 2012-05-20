@@ -1,0 +1,7 @@
+*stat_chart
+	text current_brother
+	text disposition
+	text first_servitude
+	text second_servitude
+	text third_servitude
+	text inv_money

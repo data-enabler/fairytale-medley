@@ -34,6 +34,7 @@ He did not say that their father was selling pelts, as then the woman might ask 
 
 The eldest son returned home with the news, and with his brothers, set out to gather what the old woman required.
 
-*finish
+*page_break
 *set next_scene 1
+*set current_brother "first"
 *goto_scene selector

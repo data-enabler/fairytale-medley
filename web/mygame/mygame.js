@@ -23,6 +23,7 @@
 nav = new SceneNavigator([
 	"0-intro",
 	"1-well",
+	"2-cave",
 	"selector"
 ]);
 
@@ -31,11 +32,21 @@ nav = new SceneNavigator([
 stats = {
 	next_scene: 0
 	
+	,disposition: 0
+	
+	,current_brother: "none"
+	,first_name: "the eldest son"
+	,second_name: "the middle son"
+	,third_name: "the youngest son"
+	,first_servitude: false
+	,second_servitude: false
+	,third_servitude: false
+	
 	,inv_money: true
 	
 	,king_he: 'he'
 	,king_his: 'his'
-	,king_name: 'the King'
+	,king_name: 'the king'
 	,king_desc: 'a wise and kindly king'
 	,king_entrance1: '"Certainly," replied the spirit.\nJust then, the king happened to pass by. He saw the first brother near the well, and asked, "What business does this young man have with my well?"\nThe first brother bowed. "I humbly ask your permission to draw from this, your well," he said.\n"Many ask such a boon," mused the king. "Pray tell, why do you need the water so?"'
 	,king_entrance1_disp: +1
@@ -73,13 +84,13 @@ stats = {
 	,troll_entrance3_disp: -1
 	,troll_response1: '"Ya mother, eh?" cackled the troll. "Me know no mother."'
 	,troll_response1_disp: 0
-	,troll_response2: '"Ya makin’ nostrum?!" yelled the troll. "Ya tryin’ ta poison me?"'
+	,troll_response2: '"Ya makin’ elixir?!" yelled the troll. "Ya tryin’ ta poison me?"'
 	,troll_response2_disp: -1
 	,troll_response3: '"Gold, eh?" smirked the troll. "Ya make gold from me water?"'
 	,troll_response3_disp: 1
 	,troll_bargain: '"Me water, me well. Meself no give me water to human fools," the troll continued. "What ya be givin’ me?"'
 	,troll_instareject: '"Thief! Scum!" the troll bellowed. "Ya come to steal me water, I be havin’ ya for dinner!"\nThe first brother, fearing for his safety, fled as fast as he could.'
-	,troll_reject: ''
+	,troll_reject: '"What? That not something I be needin\'," remarked the troll.'
 	,troll_ending1: '"Fair’s fair, eh. Ya be takin’ da water now, but ya better be comin’ back with me gold," smirked the troll.\nThe first brother took the water and left.'
 	,troll_ending2: '"Fair’s fair, eh. Ya be takin’ da water now. When ya mother be well, ya better be comin’ back to me," smirked the troll.'
 	,troll_ending3: '"Ya fool be havin’ nothing worthwhile to offer! Leave me place, now!" The troll watched the first brother return to the woods.'

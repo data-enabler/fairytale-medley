@@ -1,7 +1,25 @@
-*temp disposition
-*set  disposition 2
 *temp character
-*set  character "troll"
+*temp char_select
+*rand char_select 1 2
+*if char_select = 1
+	*set character "king"
+*if char_select = 2
+	*set character "troll"
+*label start
+
+*temp first_rejected
+*set  first_rejected false
+*temp second_rejected
+*set  second_rejected false
+*temp third_rejected
+*set  third_rejected false
+
+*label restart
+*set  disposition 2
+
+*temp the_brother
+*set  the_brother current_brother & "_name"
+*set  the_brother {the_brother}
 
 *comment conversation-dependent inventory
 *temp gold
@@ -88,38 +106,38 @@
 *set  ending3 character & "_ending3"
 *set  ending3 {ending3}
 
-The three brothers found the magic well in the woods where the old woman had said they would find it. The first brother stepped forward to retrieve the water, but a spirit appeared to stop him.
+The brothers found the magic well in the woods where the old woman had said they would find it. $!{the_brother} stepped forward to retrieve the water, but a spirit appeared to stop him.
 
 "I am the spirit that guards this well," the spirit said. "I am bound by duty to prevent all save the well's owner from drawing water from it. The well belongs to ${desc}."
 
 *label action
 *choice
-	#"May I speak to ${name} and ask ${his} permission?" asked the first brother.
+	#"May I speak to ${name} and ask ${his} permission?" asked ${the_brother}.
 		${entrance1}
 		*set disposition + {entrance1_disp}
 		*goto reason
-	#"I do not have much, but if you let me draw some water, perhaps I could find a way to free you of your duty to ${name}." said the first brother.
+	#"I do not have much, but if you let me draw some water, perhaps I could find a way to free you of your duty to ${name}." said ${the_brother}.
 		${entrance2}
 		*set disposition + {entrance2_disp}
 		*goto reason
-	#The first brother feigned a look of concern. "If none may draw from the well but its owner, then how is it that finch is carrying water away in a nutshell?"
+	#$!{the_brother} feigned a look of concern. "If none may draw from the well but its owner, then how is it that finch is carrying water away in a nutshell?"
 		${entrance3}
 		*set disposition + {entrance3_disp}
 		*goto reason
 
 *label reason
 *choice
-	#"Please," said the first brother. "My mother is deathly ill, and I need this well water to cure her."
+	#"Please," said ${the_brother}. "My mother is deathly ill, and I need this well water to cure her."
 		*set loyalty true
 		*set disposition + {response1_disp}
 		${response1}
 		*goto bargain
-	#"This well water is one of several ingredients in a magical nostrum," said the first brother. "The making of which is known only to an acquaintance of mine. I am gathering the ingredients for her."
+	#"This well water is one of several ingredients in a magical elixir," said ${the_brother}. "The making of which is known only to an acquaintance of mine. I am gathering the ingredients for her."
 		*set cure true
 		*set disposition + {response2_disp}
 		${response2}
 		*goto bargain
-	#"I know of a spell that may turn this particular water to gold," said the first brother. "If you let me have this water, I can make it worth your while."
+	#"I know of a spell that may turn this particular water to gold," said ${the_brother}. "If you let me have this water, I can make it worth your while."
 		*set gold true
 		*set disposition + {response3_disp}
 		${response3}
@@ -130,7 +148,7 @@ The three brothers found the magic well in the woods where the old woman had sai
 *line_break
 *if disposition <= 0
 	${instareject}
-	*ending
+	*goto reset
 *else
 	${bargain}
 	*goto loop_inner
@@ -142,6 +160,10 @@ The three brothers found the magic well in the woods where the old woman had sai
 	${ending3}
 	*goto end
 *else
+	*if disposition = 1
+		$!{name} looked impatient. $!{the_brother} knew this was his last chance to convince ${name}.
+		*line_break
+		*line_break
 	What will you offer?
 	*label loop_inner
 	*disable_reuse
@@ -149,7 +171,18 @@ The three brothers found the magic well in the woods where the old woman had sai
 		#"I pledge to return once my errand is finished and serve you."
 			*if {payment_servitude}
 				${ending2}
-				*goto end
+				*if current_brother = "first"
+					*set first_servitude true
+					*goto end
+				*elseif current_brother = "second"
+					*set second_servitude true
+					*goto end
+				*elseif current_brother = "third"
+					*set third_servitude true
+					*goto end
+				*else
+					Error: ${current_brother} is not a valid brother.
+					*goto end
 			*else
 				${reject}
 				*set disposition -1
@@ -171,7 +204,7 @@ The three brothers found the magic well in the woods where the old woman had sai
 				${reject}
 				*set disposition -1
 				*goto loop
-		*if (cure) #"I will tell you the secret of the nostrum."
+		*if (cure) #"I will tell you the secret of the elixir."
 			*if {payment_cure}
 				${ending1}
 				*goto end
@@ -188,5 +221,37 @@ The three brothers found the magic well in the woods where the old woman had sai
 				*set disposition -1
 				*goto loop
 
+*label reset
+*if current_brother = "first"
+	*set first_rejected true
+	*goto switch
+*if current_brother = "second"
+	*set second_rejected true
+	*goto switch
+*if current_brother = "third"
+	*set third_rejected true
+	*goto switch
+
+*label switch
+*label check1
+*if ((first_servitude or first_rejected) and (second_servitude or second_rejected)) and (third_servitude or third_rejected)
+	no more tries :(
+	*ending
+*if (current_brother = "first") and (first_servitude or first_rejected)
+	*set current_brother "second"
+	*goto check2
+*label check2
+*if (current_brother = "second") and (second_servitude or second_rejected)
+	*set current_brother "third"
+	*goto check3
+*label check3
+*if (current_brother = "third") and (third_servitude or third_rejected)
+	*set current_brother "first"
+	*goto check1
+*page_break
+*goto restart
+
 *label end
-*ending
+*page_break
+*set next_scene 2
+*goto_scene selector

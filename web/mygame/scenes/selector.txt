@@ -1,7 +1,25 @@
+*label check1
+*if (first_servitude and second_servitude) and third_servitude
+	no more brothers :(
+	*ending
+*if (current_brother = "first") and first_servitude
+	*set current_brother "second"
+	*goto check2
+*label check2
+*if (current_brother = "second") and second_servitude
+	*set current_brother "third"
+	*goto check3
+*label check3
+*if (current_brother = "third") and third_servitude
+	*set current_brother "first"
+	*goto check1
+
 *if next_scene = 0
 	*goto_scene 0-intro
 *elseif next_scene = 1
 	*goto_scene 1-well
+*elseif next_scene = 2
+	*goto_scene 2-cave
 *else
-	Error: ${next_scene} is not a valid scene number
+	Error: ${next_scene} is not a valid scene number.
 	*ending
