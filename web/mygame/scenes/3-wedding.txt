@@ -2,11 +2,11 @@
 *temp char_select
 *rand char_select 1 3
 *if char_select = 1
-	*set character "king"
+	*set character "mayor"
 *if char_select = 2
-	*set character "troll"
+	*set character "merchant"
 *if char_select = 3
-	*set character "witch"
+	*set character "carpenter"
 *label start
 
 *temp first_rejected
@@ -17,7 +17,7 @@
 *set  third_rejected false
 
 *temp once_again
-*set  once_again ""
+*set  once_again "soon, "
 
 *label restart
 *set  disposition 2
@@ -27,8 +27,8 @@
 *set  the_brother {the_brother}
 
 *comment conversation-dependent inventory
-*temp gold
-*set  gold false
+*temp veil
+*set  veil false
 *temp cure
 *set  cure false
 *temp loyalty
@@ -39,8 +39,8 @@
 *set  payment_servitude character & "_payment_servitude"
 *temp payment_money
 *set  payment_money character & "_payment_money"
-*temp payment_gold
-*set  payment_gold character & "_payment_gold"
+*temp payment_veil
+*set  payment_veil character & "_payment_veil"
 *temp payment_cure
 *set  payment_cure character & "_payment_cure"
 *temp payment_loyalty
@@ -111,39 +111,39 @@
 *set  ending3 character & "_ending3"
 *set  ending3 {ending3}
 
-The brothers ${once_again}found the magic well in the woods where the old woman had said they would find it. $!{the_brother} stepped forward to retrieve the water, but a spirit appeared to stop him.
+$!{once_again}the three brothers came across a small chapel. They could see people bustling about busily, and it was plain to see that a wedding was about to take place. From the conversations they could overhear, the bride was the daughter of ${desc}, and the girl was much like her father. Who the groom was, they could not tell. They knew it was their chance to retrieve a veil from a bride, and so resolved to do so.
 
-"I am the spirit that guards this well," the spirit said. "I am bound by duty to prevent all save the well's owner from drawing water from it. The well belongs to ${desc}."
+$!{the_brother} went forth to find the bride. He soon found her, sitting by a stream. Her veil lay next to her on the grass.
 
 *label action
 *choice
-	#"May I speak to ${name} and ask ${his} permission?" asked ${the_brother}.
+	#"Happy lady," said ${the_brother}. "I have no right to ask favors of you on your wedding day, but may I have your veil?"
 		${entrance1}
 		*set disposition + {entrance1_disp}
 		*goto reason
-	#"I do not have much, but if you let me draw some water, perhaps I could find a way to free you of your duty to ${name}." said ${the_brother}.
+	#$!{the_brother} approached the bride. "Happy lady," he said. "I come with a strange request. Would you give me your veil? I would offer you fair trade for it."
 		${entrance2}
 		*set disposition + {entrance2_disp}
 		*goto reason
-	#$!{the_brother} feigned a look of concern. "If none may draw from the well but its owner, then how is it that finch is carrying water away in a nutshell?"
+	#$!{the_brother} approached the bride. "My fair lady, it appears your veil has gotten dirty lying on the ground beside you," he said. "A dirty veil does not befit a bride of your beauty. If you'll allow me, I'll take it to get cleaned for you."
 		${entrance3}
 		*set disposition + {entrance3_disp}
 		*goto reason
 
 *label reason
 *choice
-	#"Please," said ${the_brother}. "My mother is deathly ill, and I need this well water to cure her."
+	#"My mother is deathly ill and I need this veil as part of a magical cure for her."
 		*set loyalty true
 		*set disposition + {response1_disp}
 		${response1}
 		*goto bargain
-	#"This well water is one of several ingredients in a magical elixir," said ${the_brother}. "The making of which is known only to an acquaintance of mine. I am gathering the ingredients for her."
+	#"There is a cunning woman I know, who can take an object such as this veil and use it to create wonderful spells and potions. I am searching for the veil of a bride on her wedding day on this woman's behalf."
 		*set cure true
 		*set disposition + {response2_disp}
 		${response2}
 		*goto bargain
-	#"I know of a spell that may turn this particular water to gold," said ${the_brother}. "If you let me have this water, I can make it worth your while."
-		*set gold true
+	#"It strikes me that a beautiful bride such as yourself deserves a veil that fits your beauty," said ${the_brother}. "I know some fairies who could weave a wondrous veil for you out of gossamer strands, but they need a veil to base their design on."
+		*set veil true
 		*set disposition + {response3_disp}
 		${response3}
 		*goto bargain
@@ -166,7 +166,7 @@ The brothers ${once_again}found the magic well in the woods where the old woman 
 	*goto reset
 *else
 	*if disposition = 1
-		$!{name} looked impatient. $!{the_brother} knew this was his last chance to convince ${name}.
+		$!{name} looked impatient. $!{the_brother} knew this was his last chance to convince her.
 		*line_break
 		*line_break
 	What will you offer?
@@ -201,15 +201,15 @@ The brothers ${once_again}found the magic well in the woods where the old woman 
 				${reject}
 				*set disposition -1
 				*goto loop
-		*if (gold) #"I will give you some of the magic gold, once I have it."
-			*if {payment_gold}
+		*if (veil) #"I could return to you with a fairy veil to match your beauty."
+			*if {payment_veil}
 				${ending1}
 				*goto end
 			*else
 				${reject}
 				*set disposition -1
 				*goto loop
-		*if (cure) #"I will tell you the secret of the elixir."
+		*if (cure) #"I could return to you with some magical potion as payment."
 			*if {payment_cure}
 				${ending1}
 				*goto end
@@ -217,7 +217,7 @@ The brothers ${once_again}found the magic well in the woods where the old woman 
 				${reject}
 				*set disposition -1
 				*goto loop
-		*if (loyalty) #"I offer you my family's eternal gratitude."
+		*if (loyalty) #"I can offer the gratitude of my family."
 			*if {payment_loyalty}
 				${ending1}
 				*goto end
@@ -227,7 +227,7 @@ The brothers ${once_again}found the magic well in the woods where the old woman 
 				*goto loop
 
 *label reset
-*set  once_again "once again "
+*set  once_again "once again, "
 *if current_brother = "first"
 	*set first_rejected true
 	*goto switch
@@ -258,5 +258,4 @@ The brothers ${once_again}found the magic well in the woods where the old woman 
 
 *label end
 *page_break
-*set next_scene 2
-*goto_scene selector
+*goto_scene 99-ending

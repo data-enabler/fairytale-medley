@@ -1,0 +1,55 @@
+*temp num
+*set  num 0
+*if (first_servitude)
+	*set num +1
+	*goto two
+*label two
+*if (second_servitude)
+	*set num +1
+	*goto three
+*label three
+*if (third_servitude)
+	*set num +1
+	*goto continue
+	
+*label continue
+The three brothers returned at last to the old woman with the objects she had asked for. It was not long before the woman had the cure ready, and the hunter's wife was saved.
+
+"A mother could not ask for more brave and wonderful sons," the hunter's wife cried.
+
+*if (num = 0)
+	The three brothers embraced their mother gladly, tears of joy streaming down their face. When their father returned, they told him their amazing story, and he laughed and said to his wife, "What fine sons we have!"
+	
+	And so the hunter, his wife, and their three sons lived happily together evermore.
+	*ending
+*elseif (num = 1)
+	Yet all was not joy, as one brother had to leave shortly, to fulfill the terms of his servitude.
+	
+	"Do not go, oh please do not go!" the hunter's wife cried. But he was honor bound to do so.
+	
+	When the hunter returned, it was to a diminished household. The two remaining brothers told their father the tale, and of the sacrifice their brother made.
+	
+	"Brave boy," the hunter said. "I can only hope that he is released from servitude soon, and can return to us."
+	
+	And so the hunter, his wife, and his two remaining sons lived on, awaiting the day their family would once again be complete.
+	*ending
+*elseif (num = 2)
+	Yet all was not joy, as two brothers had to leave shortly, to fulfill the terms of their servitude.
+	
+	"Do not go, oh please do not go!" the hunter's wife cried. But they were honor bound to do so.
+	
+	When the hunter returned, it was to a diminished household. The last remaining brother told his father the tale, and of the sacrifice his brothers made.
+	
+	"Brave boys," the hunter said. "I am grateful that at least one of my sons was spared. I hope one day your brothers' terms shall be fulfilled and we will see them again."
+	
+	And so the hunter, his wife, and his last remaining son lived on, awaiting the day their family would once again be complete.
+	*ending
+*elseif (num = 3)
+	Yet the joy was short lived, as the three brothers informed their mother that they would have to leave her.
+	
+	"Oh horrible day!" cried the hunter's wife. "I am restored to health only to lose my reason for living!" The brothers comforted their mother as best they could, though tears streamed down all their faces freely.
+	
+	When the hunter returned, he found his wife mourning the loss of their sons. His wife told him of their sacrifice, and he wept to see his sons gone, even as he was grateful for his wife's life.
+	
+	And so the hunter and his wife lived on in mourning, awaiting the day that their sons would return to them.
+	*ending

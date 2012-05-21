@@ -2,11 +2,11 @@
 *temp char_select
 *rand char_select 1 3
 *if char_select = 1
-	*set character "king"
+	*set character "wolf"
 *if char_select = 2
-	*set character "troll"
+	*set character "mouse"
 *if char_select = 3
-	*set character "witch"
+	*set character "fox"
 *label start
 
 *temp first_rejected
@@ -17,7 +17,7 @@
 *set  third_rejected false
 
 *temp once_again
-*set  once_again ""
+*set  once_again "soon "
 
 *label restart
 *set  disposition 2
@@ -27,24 +27,24 @@
 *set  the_brother {the_brother}
 
 *comment conversation-dependent inventory
-*temp gold
-*set  gold false
-*temp cure
-*set  cure false
 *temp loyalty
 *set  loyalty false
+*temp cake
+*set  cake false
+*temp moss
+*set  moss false
 
 *comment character dependent dialogue and disposition changes
 *temp payment_servitude
 *set  payment_servitude character & "_payment_servitude"
 *temp payment_money
 *set  payment_money character & "_payment_money"
-*temp payment_gold
-*set  payment_gold character & "_payment_gold"
-*temp payment_cure
-*set  payment_cure character & "_payment_cure"
 *temp payment_loyalty
 *set  payment_loyalty character & "_payment_loyalty"
+*temp payment_cake
+*set  payment_cake character & "_payment_cake"
+*temp payment_moss
+*set  payment_moss character & "_payment_moss"
 
 *temp he
 *set  he character & "_he"
@@ -110,40 +110,49 @@
 *temp ending3
 *set  ending3 character & "_ending3"
 *set  ending3 {ending3}
+*temp ending4
+*set  ending4 character & "_ending4"
+*set  ending4 {ending4}
 
-The brothers ${once_again}found the magic well in the woods where the old woman had said they would find it. $!{the_brother} stepped forward to retrieve the water, but a spirit appeared to stop him.
+The three brothers ${once_again}found themselves at the mouth of the cave. Its gaping maw held nothing but blackness, giving no hint to the outside world of the glowing treasure it contained.
 
-"I am the spirit that guards this well," the spirit said. "I am bound by duty to prevent all save the well's owner from drawing water from it. The well belongs to ${desc}."
+$!{the_brother} crept forward into the cave until he was swallowed by the darkness. He walked and walked until he saw a green light just ahead of him.
+
+"The mushrooms!" exclaimed the hunter's son.
+
+He gathered a bunch and shoved them in his pocket, then plucked a single glowing mushroom to help him see on his way out.
+
+When he reached the mouth of the cave, he found his escape blocked by ${desc}.
 
 *label action
 *choice
-	#"May I speak to ${name} and ask ${his} permission?" asked ${the_brother}.
+	#To avoid waking the sleeping creature, ${the_brother} began to stealthily creep past him.
 		${entrance1}
 		*set disposition + {entrance1_disp}
 		*goto reason
-	#"I do not have much, but if you let me draw some water, perhaps I could find a way to free you of your duty to ${name}." said ${the_brother}.
+	#Sure the animal wouldn't mind a slight interruption in his nap, the hunter's son shook him gently to awaken him. "May I please get by?" asked ${the_brother}, politely.
 		${entrance2}
 		*set disposition + {entrance2_disp}
 		*goto reason
-	#$!{the_brother} feigned a look of concern. "If none may draw from the well but its owner, then how is it that finch is carrying water away in a nutshell?"
+	#Wishing to avoid an encounter with the animal. $!{the_brother} picked up a rock and aiming carefully he threw it at the animal. It landed on the creature's tail, forcing him from his slumber. Startled and confused, the creature disappeared running from the cave as fast as possible.
 		${entrance3}
 		*set disposition + {entrance3_disp}
 		*goto reason
 
 *label reason
 *choice
-	#"Please," said ${the_brother}. "My mother is deathly ill, and I need this well water to cure her."
-		*set loyalty true
+	#"I have to go fetch the third ingredient for a magical elixir that will cure my sick mother before she dies!"
 		*set disposition + {response1_disp}
+		*set loyalty true
 		${response1}
 		*goto bargain
-	#"This well water is one of several ingredients in a magical elixir," said ${the_brother}. "The making of which is known only to an acquaintance of mine. I am gathering the ingredients for her."
-		*set cure true
+	#"Oh. I was just picking these for someone. I'm on my way to a wedding now!"
+		*set cake true
 		*set disposition + {response2_disp}
 		${response2}
 		*goto bargain
-	#"I know of a spell that may turn this particular water to gold," said ${the_brother}. "If you let me have this water, I can make it worth your while."
-		*set gold true
+	#"What glowing mushrooms? I was just out for a walk, and ended up lost in this cave. Fortunately, I found these glowing rocks on a lush bed of moss back there! Without them I'd still be trying to find my way out."
+		*set moss true
 		*set disposition + {response3_disp}
 		${response3}
 		*goto bargain
@@ -201,16 +210,16 @@ The brothers ${once_again}found the magic well in the woods where the old woman 
 				${reject}
 				*set disposition -1
 				*goto loop
-		*if (gold) #"I will give you some of the magic gold, once I have it."
-			*if {payment_gold}
-				${ending1}
+		*if (cake) #"I will bring you back a piece of cake from the wedding when it is over."
+			*if {payment_cake}
+				${ending4}
 				*goto end
 			*else
 				${reject}
 				*set disposition -1
 				*goto loop
-		*if (cure) #"I will tell you the secret of the elixir."
-			*if {payment_cure}
+		*if (moss) #"I will give you the directions to find the lush bed of moss at the back of the cave so you can finish your nap in peace and comfort."
+			*if {payment_moss}
 				${ending1}
 				*goto end
 			*else
@@ -258,5 +267,5 @@ The brothers ${once_again}found the magic well in the woods where the old woman 
 
 *label end
 *page_break
-*set next_scene 2
+*set next_scene 3
 *goto_scene selector
