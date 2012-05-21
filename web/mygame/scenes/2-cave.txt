@@ -158,13 +158,12 @@ When he reached the mouth of the cave, he found his escape blocked by ${desc}.
 		*goto bargain
 
 *label bargain
-*line_break
-*line_break
 *if disposition <= 0
+	*line_break
+	*line_break
 	${instareject}
 	*goto reset
 *else
-	${bargain}
 	*goto loop_inner
 	
 *label loop

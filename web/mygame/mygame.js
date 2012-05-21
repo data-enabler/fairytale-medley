@@ -149,7 +149,7 @@ stats = {
 	,wolf_response3_disp: 1
 	,wolf_bargain: ''
 	,wolf_instareject: '"You evil little wretch," barked the wolf, snatching the mushrooms from the hunter\'s son. "You\'re going nowhere with these mushrooms. Instead you will accompany them in a stew as my dinner."\nThe wolf lunged toward the hunter\'s son, but he was too quick for the wolf and dodged running away from the cave as fast as he could.'
-	,wolf_reject: ''
+	,wolf_reject: '"Now what possible use could I have for that," sneered the wolf.'
 	,wolf_ending1: '"A lovely offer. I will forgive your interruption and let you pass. Be on your way, child," the wolf said, as he began walking toward the soft moss to continue his nap.\nThe hunter\'s son took the mushrooms and left.'
 	,wolf_ending2: '"I accept such a payment. You may be on your way with your mushrooms, but! You better return and do as you promised, or I will find you and eat your whole family for dinner," growled the wolf.\nThe hunter\'s son took the glowing mushrooms and left.'
 	,wolf_ending3: '"This does not interest me," snapped the wolf, "I will just eat you and your mother instead."\nDodging the wolf\'s attacks, the hunter\'s son ran out of the cave and into the woods before the wolf could snap his powerful jaws around the hunter\'s son\'s jugular.'
@@ -178,10 +178,10 @@ stats = {
 	,mouse_response3_disp: -1
 	,mouse_bargain: ''
 	,mouse_instareject: '"What a terrible child you are!" squeaked the mouse. Before the hunter\'s son could even realize what was happening the mouse had eaten all of his mushrooms. "Now get out of here, before I nibble off your ears!" he shrieked.\nThe hunter\'s son, afraid of losing his hearing forever, ran quickly into the woods.'
-	,mouse_reject: ''
+	,mouse_reject: '"Um…I don\'t really have any use for that," said the mouse.'
 	,mouse_ending1: ''
 	,mouse_ending2: '"I could really use someone as big and strong as yourself to help me out for a while! I accept your payment, young man. But please remember to return after you have cured your mother," said the mouse happily.\nThe hunter\'s son took the glowing mushrooms and left.'
-	,mouse_ending3: ''
+	,mouse_ending3: '"Well," the mouse said, "if you have nothing to offer in return for interrupting my nap, then I suppose I\'ll just take those mushrooms!\nThen he scurried up the hunter’s son’s leg and reaching the mushrooms, ate them all. “Good luck on your adventure now,” cried the mouse, angrily.'
 	,mouse_ending4: '"Cake is my FAVORITE!" said the mouse, excitedly. "It has been so long since I have had something so delicious to eat. Please make sure to stop by here on your way home to deliver my cake. I will probably still be napping." The mouse giggled and walked further into the cave to continue his nap.\nJoyful at successfully obtaining the mushrooms, the hunter\'s son skipped his way back to his brothers.'
 	,mouse_payment_servitude: true
 	,mouse_payment_money: false
@@ -207,7 +207,7 @@ stats = {
 	,fox_response3_disp: 0
 	,fox_bargain: ''
 	,fox_instareject: '"Give those back, and I will let you leave with your life," scowled the fox, baring his sharp teeth. "I will count to three. If you are still here, perhaps I will change my mind. Three!"\nThe hunter\'s son ran away quickly into the woods, leaving the mushrooms behind.'
-	,fox_reject: ''
+	,fox_reject: '"I\'m really not interested in that," said the fox.'
 	,fox_ending1: ''
 	,fox_ending2: '"I see. That is good. I shall train you to be a prankster in exchange for your services! Take the mushrooms now, but return to me quickly."\nThe hunter\'s son took the glowing mushrooms and left.'
 	,fox_ending3: '"But what shall I do with that?" asked the fox. "Leave, boy."\nThe hunter\'s son left the cave his head hanging in defeat.'
